@@ -65,4 +65,79 @@ function MenuScreen(props: NativeStackScreenProps<RootStackParamList, "MenuScree
       Alert.alert("Missing fields", "Please fill out any missing details before saving.");
     }
   };
+
+  return (
+    //makes the view shift up when the keyboard appears
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}>
+
+      {/* dismisses keyboard when the user taps outside the input fields */}
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
+        {/* allows the user to scroll through the form */}
+        <ScrollView contentContainerStyle={styles.formContainer}>
+
+          <Text style={styles.formHeader}>Add a new menu item</Text>
+
+          {/* input field for dish name */}
+          <TextInput
+            style={styles.input}
+            placeholder="Dish name"
+            value={dishName}
+            onChangeText={setDishName}
+          />
+
+          {/* input field for dish description */}
+          <TextInput
+            style={styles.input}
+            placeholder="Dish description"
+            value={description}
+            onChangeText={setDescription}
+          />
+
+          {/* picker for menu course item */}
+          <View style={styles.pickerWrapper}>
+            <Text style={styles.label}>Course</Text>
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={course}
+                onValueChange={(value) => setCourse(value)}
+                mode="dropdown"
+                dropdownIconColor="#000000"
+                style={styles.pickerStyle}
+              >
+
+                <Picker.Item label="Select a course" value="" color="#999" />
+                <Picker.Item label="Starter" value="Starter" />
+                <Picker.Item label="Main" value="Main" />
+                <Picker.Item label="Dessert" value="Dessert" />
+              </Picker>
+            </View>
+          </View>
+
+          {/* input field for dish price */}
+          <TextInput
+            style={styles.input}
+            placeholder="Price"
+            keyboardType="numeric"
+            value={price}
+            onChangeText={setPrice}
+          />
+
+          {/* Button to save dish */}
+          <TouchableOpacity style={styles.saveButton} onPress={handleSubmit}>
+            <Text style={styles.saveButtonText}>Save dish</Text>
+          </TouchableOpacity>
+
+          {/* button to exit new menu item page */}
+          <TouchableOpacity style={styles.cancelButton} onPress={() => props.navigation.goBack()}>
+            <Text style={styles.cancelButtonText}>Back</Text>
+          </TouchableOpacity>
+
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+
+  );
 }
