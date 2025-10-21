@@ -1,3 +1,10 @@
+/*CODE ATTRIBUTION*/
+/*TITLE: IIE MAST5112 Module Manual 2025*/
+/*AUTHOR: The Independent Institute of Education (Pty) Ltd*/
+/*DATE: 07/03/2025*/
+/*VERSION: 1.0*/
+/*AVAILABLE: https://advtechonline.sharepoint.com/:w:/r/sites/TertiaryStudents/_layouts/15/Doc.aspx?sourcedoc=%7BC4AAF478-96AC-4469-8005-F7CDC4A15EBB%7D&file=MAST5112MM.docx&action=default&mobileredirect=true*/
+
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -7,7 +14,6 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
-  Image,
   Alert,
   Keyboard,
   ScrollView,
@@ -21,66 +27,41 @@ import { RootStackParamList, MenuItem } from "./type";
 import * as PickerModule from "@react-native-picker/picker";
 const Picker = PickerModule.Picker;
 
-//adds the menu screen to the app
 function MenuScreen(props: NativeStackScreenProps<RootStackParamList, "MenuScreen">) {
-
-  //state variables so that they can store user input for the menu items
   const [dishName, setDishName] = useState("");
   const [description, setDescription] = useState("");
   const [course, setCourse] = useState<string>("");
   const [price, setPrice] = useState("");
 
-  //validates input, creates a new item & adds it to the menu
   const handleSubmit = () => {
-
-    //makes sure all fields have a value
     if (dishName && description && course && price) {
-      //converts price from string to a floating-point number
       const priceValue = parseFloat(price);
-
-      //makes sure that the price value is a positive number
       if (priceValue > 0) {
-
-        //makes a new menu option from the user's entered data
         const newItem: MenuItem = {
           dishName,
           description,
           course,
           price: priceValue,
         };
-
-        //adds the new menu item to the menu list
         props.route.params.setItems([...props.route.params.items, newItem]);
-
-        //takes the user back to the previous screen after the menu item has been added to the menu list
         props.navigation.goBack();
-
       } else {
-        //displays a pop up alert if the menu price isn't greater than 0
         Alert.alert("Invalid price", "Price value must be greater than 0.");
       }
-
     } else {
-      //displays a pop up alert if any fields are left empty
       Alert.alert("Missing fields", "Please fill out any missing details before saving.");
     }
   };
 
   return (
-    //makes the view shift up when the keyboard appears
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1 }}>
-
-      {/* dismisses keyboard when the user taps outside the input fields */}
+      style={{ flex: 1 }}
+    >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
-        {/* allows the user to scroll through the form */}
         <ScrollView contentContainerStyle={styles.formContainer}>
-
           <Text style={styles.formHeader}>Add a new menu item</Text>
 
-          {/* input field for dish name */}
           <TextInput
             style={styles.input}
             placeholder="Dish name"
@@ -88,7 +69,6 @@ function MenuScreen(props: NativeStackScreenProps<RootStackParamList, "MenuScree
             onChangeText={setDishName}
           />
 
-          {/* input field for dish description */}
           <TextInput
             style={styles.input}
             placeholder="Dish description"
@@ -96,7 +76,6 @@ function MenuScreen(props: NativeStackScreenProps<RootStackParamList, "MenuScree
             onChangeText={setDescription}
           />
 
-          {/* picker for menu course item */}
           <View style={styles.pickerWrapper}>
             <Text style={styles.label}>Course</Text>
             <View style={styles.pickerContainer}>
@@ -104,10 +83,9 @@ function MenuScreen(props: NativeStackScreenProps<RootStackParamList, "MenuScree
                 selectedValue={course}
                 onValueChange={(value) => setCourse(value)}
                 mode="dropdown"
-                dropdownIconColor="#000000"
+                dropdownIconColor="#a72913"
                 style={styles.pickerStyle}
               >
-
                 <Picker.Item label="Select a course" value="" color="#999" />
                 <Picker.Item label="Starter" value="Starter" />
                 <Picker.Item label="Main" value="Main" />
@@ -116,7 +94,6 @@ function MenuScreen(props: NativeStackScreenProps<RootStackParamList, "MenuScree
             </View>
           </View>
 
-          {/* input field for dish price */}
           <TextInput
             style={styles.input}
             placeholder="Price"
@@ -125,20 +102,16 @@ function MenuScreen(props: NativeStackScreenProps<RootStackParamList, "MenuScree
             onChangeText={setPrice}
           />
 
-          {/* Button to save dish */}
           <TouchableOpacity style={styles.saveButton} onPress={handleSubmit}>
             <Text style={styles.saveButtonText}>Save dish</Text>
           </TouchableOpacity>
 
-          {/* button to exit new menu item page */}
           <TouchableOpacity style={styles.cancelButton} onPress={() => props.navigation.goBack()}>
             <Text style={styles.cancelButtonText}>Back</Text>
           </TouchableOpacity>
-
         </ScrollView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
-
   );
 }
 
@@ -190,10 +163,9 @@ function HomeScreen(props: NativeStackScreenProps<RootStackParamList, "HomeScree
 }
 
 const styles = StyleSheet.create({
-
   container: { flex: 1, backgroundColor: "#f2e9d4", padding: 15 },
   mainTitle: { fontSize: 28, fontWeight: "800", color: "#571310", textAlign: "center" },
-  itemCountText: { fontSize: 16, color: "#571310", textAlign: "center", marginBottom: 10, },
+  itemCountText: { fontSize: 16, color: "#571310", textAlign: "center", marginBottom: 10 },
 
   card: {
     backgroundColor: "#fff",
@@ -210,6 +182,7 @@ const styles = StyleSheet.create({
   cardDesc: { color: "#571310", fontSize: 14, marginVertical: 5 },
   cardCourse: { color: "#a72913", fontSize: 14, fontWeight: "600" },
   cardPrice: { color: "#571310", fontSize: 13 },
+
   removeButton: {
     backgroundColor: "#a72913",
     padding: 10,
@@ -218,6 +191,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   removeText: { color: "#fff", fontWeight: "bold" },
+
   addButton: {
     backgroundColor: "#a72913",
     borderRadius: 30,
@@ -229,40 +203,39 @@ const styles = StyleSheet.create({
   },
   addText: { color: "#fff", fontSize: 18, fontWeight: "bold" },
 
-formContainer: { backgroundColor: "#f2e9d4", padding: 20 },
+  formContainer: { backgroundColor: "#f2e9d4", padding: 20 },
   formHeader: { fontSize: 24, color: "#571310", fontWeight: "bold", textAlign: "center", marginBottom: 20 },
 
   input: {
     backgroundColor: "#fff",
     borderRadius: 10,
     borderWidth: 1,
-    paddingHorizontal: 12,
+    borderColor: "#a72913",
+    paddingHorizontal: 14,
     height: 50,
-    justifyContent: "center",
     marginVertical: 8,
+    fontSize: 16,
+    color: "#571310",
   },
 
   pickerWrapper: { marginVertical: 10 },
   label: { fontSize: 15, fontWeight: "600", color: "#571310", marginBottom: 6, marginLeft: 4 },
+
   pickerContainer: {
     borderWidth: 1,
+    borderColor: "#a72913",
     borderRadius: 10,
     backgroundColor: "#fff",
-    height: 60,            
-    justifyContent: "center",    // center picker vertically in the box
-    alignItems: "center",
-    overflow: "hidden",
-  },
-  pickerStyle: {
-    height: 50,
-    width: "100%",
-    color: "#571310",
-    fontSize: 15,
-   paddingHorizontal: 12,
-    marginTop: 0,                 // remove iOS nudge so Picker centers correctly
-    paddingVertical: 0,
+    height: Platform.OS === "ios" ? 120 : 55,
+    justifyContent: "center",
+    paddingHorizontal: 10,
   },
 
+  pickerStyle: {
+    color: "#571310",
+    fontSize: 16,
+    width: "100%",
+  },
 
   saveButton: { backgroundColor: "#a72913", padding: 15, borderRadius: 10, marginTop: 15, alignItems: "center" },
   saveButtonText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
@@ -270,7 +243,6 @@ formContainer: { backgroundColor: "#f2e9d4", padding: 20 },
   cancelButtonText: { color: "#fff", fontWeight: "bold" },
 });
 
-// Navigation setup (required to prevent error)
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
