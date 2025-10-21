@@ -227,4 +227,42 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   addText: { color: "#fff", fontSize: 18, fontWeight: "bold" },
+
+formContainer: { backgroundColor: "#f2e9d4", padding: 20 },
+  formHeader: { fontSize: 24, color: "#571310", fontWeight: "bold", textAlign: "center", marginBottom: 20 },
+
+  input: {
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    borderWidth: 1,
+    paddingHorizontal: 12,
+    height: 50,
+    justifyContent: "center",
+    marginVertical: 8,
+  },
+
+  pickerWrapper: { marginVertical: 10 },
+  label: { fontSize: 15, fontWeight: "600", color: "#571310", marginBottom: 6, marginLeft: 4 },
+  pickerContainer: {
+    borderWidth: 1,
+    borderRadius: 10,
+    backgroundColor: "#fff",
+    height: 50,
+    justifyContent: "center",
+    overflow: "hidden",
+  },
+  pickerStyle: {
+    height: 50,
+    width: "100%",
+    color: "#571310",
+    fontSize: 15,
+    paddingHorizontal: 10,
+    marginTop: Platform.OS === "ios" ? -6 : -2,
+  },
+
+
+  saveButton: { backgroundColor: "#a72913", padding: 15, borderRadius: 10, marginTop: 15, alignItems: "center" },
+  saveButtonText: { color: "#fff", fontWeight: "bold", fontSize: 16 },
+  cancelButton: { backgroundColor: "#a72913", alignItems: "center", marginTop: 10, padding: 10, borderRadius: 10 },
+  cancelButtonText: { color: "#fff", fontWeight: "bold" },
 });
