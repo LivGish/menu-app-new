@@ -188,3 +188,43 @@ function HomeScreen(props: NativeStackScreenProps<RootStackParamList, "HomeScree
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+
+  container: { flex: 1, backgroundColor: "#f2e9d4", padding: 15 },
+  mainTitle: { fontSize: 28, fontWeight: "800", color: "#571310", textAlign: "center" },
+  itemCountText: { fontSize: 16, color: "#571310", textAlign: "center", marginBottom: 10, },
+
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 18,
+    marginVertical: 10,
+    overflow: "hidden",
+    shadowColor: "#000",
+    shadowOpacity: 0.15,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+  cardContent: { padding: 15 },
+  cardTitle: { fontSize: 20, fontWeight: "700", color: "#571310" },
+  cardDesc: { color: "#571310", fontSize: 14, marginVertical: 5 },
+  cardPrice: { color: "#571310", fontSize: 13 },
+  removeButton: {
+    backgroundColor: "#a72913",
+    padding: 10,
+    borderRadius: 8,
+    alignItems: "center",
+    marginTop: 10,
+  },
+  removeText: { color: "#fff", fontWeight: "bold" },
+  addButton: {
+    backgroundColor: "#a72913",
+    borderRadius: 30,
+    paddingVertical: 16,
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 20,
+    elevation: 4,
+  },
+  addText: { color: "#fff", fontSize: 18, fontWeight: "bold" },
+});
