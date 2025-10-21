@@ -141,3 +141,49 @@ function MenuScreen(props: NativeStackScreenProps<RootStackParamList, "MenuScree
 
   );
 }
+
+function HomeScreen(props: NativeStackScreenProps<RootStackParamList, "HomeScreen">) {
+  const [items, setItems] = useState<MenuItem[]>([]);
+
+  const removeItem = (index: number) => {
+    Alert.alert("Remove dish", "Are you sure you want to remove this dish?", [
+      { text: "Cancel", style: "cancel" },
+      { text: "Yes", onPress: () => setItems(items.filter((_, i) => i !== index)) },
+    ]);
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.mainTitle}>Menu</Text>
+      <Text style={styles.itemCountText}>
+        {items.length === 0
+          ? "No items on the menu yet."
+          : `You currently have ${items.length} item${items.length > 1 ? "s" : ""} on your menu.`}
+      </Text>
+
+      <FlatList
+        data={items}
+        keyExtractor={(_, i) => i.toString()}
+        renderItem={({ item, index }) => (
+          <View style={styles.card}>
+            <View style={styles.cardContent}>
+              <Text style={styles.cardTitle}>{item.dishName}</Text>
+              <Text style={styles.cardDesc}>{item.description}</Text>
+              <Text style={styles.cardPrice}>R{item.price}</Text>
+              <TouchableOpacity style={styles.removeButton} onPress={() => removeItem(index)}>
+                <Text style={styles.removeText}>Remove</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+      />
+
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={() => props.navigation.navigate("MenuScreen", { items, setItems })}
+      >
+        <Text style={styles.addText}>+ Add new item</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
+  );
+}
