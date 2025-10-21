@@ -208,6 +208,7 @@ const styles = StyleSheet.create({
   cardContent: { padding: 15 },
   cardTitle: { fontSize: 20, fontWeight: "700", color: "#571310" },
   cardDesc: { color: "#571310", fontSize: 14, marginVertical: 5 },
+  cardCourse: { color: "#a72913", fontSize: 14, fontWeight: "600" },
   cardPrice: { color: "#571310", fontSize: 13 },
   removeButton: {
     backgroundColor: "#a72913",
@@ -247,8 +248,9 @@ formContainer: { backgroundColor: "#f2e9d4", padding: 20 },
     borderWidth: 1,
     borderRadius: 10,
     backgroundColor: "#fff",
-    height: 50,
-    justifyContent: "center",
+    height: 60,            
+    justifyContent: "center",    // center picker vertically in the box
+    alignItems: "center",
     overflow: "hidden",
   },
   pickerStyle: {
@@ -256,8 +258,9 @@ formContainer: { backgroundColor: "#f2e9d4", padding: 20 },
     width: "100%",
     color: "#571310",
     fontSize: 15,
-    paddingHorizontal: 10,
-    marginTop: Platform.OS === "ios" ? -6 : -2,
+   paddingHorizontal: 12,
+    marginTop: 0,                 // remove iOS nudge so Picker centers correctly
+    paddingVertical: 0,
   },
 
 
