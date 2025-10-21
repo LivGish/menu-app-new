@@ -169,6 +169,7 @@ function HomeScreen(props: NativeStackScreenProps<RootStackParamList, "HomeScree
             <View style={styles.cardContent}>
               <Text style={styles.cardTitle}>{item.dishName}</Text>
               <Text style={styles.cardDesc}>{item.description}</Text>
+              <Text style={styles.cardCourse}>{item.course}</Text>
               <Text style={styles.cardPrice}>R{item.price}</Text>
               <TouchableOpacity style={styles.removeButton} onPress={() => removeItem(index)}>
                 <Text style={styles.removeText}>Remove</Text>
