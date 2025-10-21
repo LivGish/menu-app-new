@@ -266,3 +266,17 @@ formContainer: { backgroundColor: "#f2e9d4", padding: 20 },
   cancelButton: { backgroundColor: "#a72913", alignItems: "center", marginTop: 10, padding: 10, borderRadius: 10 },
   cancelButtonText: { color: "#fff", fontWeight: "bold" },
 });
+
+// Navigation setup (required to prevent error)
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="HomeScreen">
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="MenuScreen" component={MenuScreen} options={{ title: "Add Menu Item" }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
