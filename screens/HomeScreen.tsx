@@ -19,7 +19,12 @@ export default function HomeScreen({ navigation, items, removeItem, averages }: 
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.heading}> Our Menu {items.length}</Text>
+                <Text style={styles.mainTitle}>Menu</Text>
+                <Text style={styles.itemCountText}>
+                    {items.length === 0
+                    ? "No items on the menu yet."
+                    : `You currently have ${items.length} item${items.length > 1 ? "s" : ""} on your menu.`}
+                </Text>
 
             <View style={styles.statsRow}>
                 <View style={styles.stat}>
@@ -72,7 +77,8 @@ const c = { bg: "#f2e9d4", card: "#faf4e6ff", text: "#571310", meta: "#571310", 
  
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: c.bg, padding: 16 },
-    heading: { color: c.text, fontSize: 26, fontWeight: "900", textAlign: "center", marginBottom: 12 },
+    mainTitle: { fontSize: 28, fontWeight: "800", color: "#571310", textAlign: "center" }, 
+    itemCountText: { fontSize: 16, color: "#571310", textAlign: "center", marginBottom: 10 },   
     statsRow: { flexDirection: "row", justifyContent: "space-between", marginBottom: 12 },
     stat: { backgroundColor: c.card, width: "32%", borderRadius: 14, paddingVertical: 10, alignItems: "center", elevation: 3 },
     statLabel: { color: c.meta, fontSize: 12 },
@@ -84,9 +90,9 @@ const styles = StyleSheet.create({
     desc: { color: c.meta, marginVertical: 6 },
     meta: { color: c.text, fontSize: 12, opacity: 0.7 },
     remove: { backgroundColor: c.chip, paddingVertical: 10, borderRadius: 10, alignItems: "center", marginTop: 10 },
-    removeText: { color: c.text, fontWeight: "800" },
+    removeText: { color: "#f2e9d4", fontWeight: "800" },
     fabs: { position: "absolute", right: 20, bottom: 20, flexDirection: "row", gap: 12 },
     fab: { backgroundColor: c.accent, paddingVertical: 14, paddingHorizontal: 22, borderRadius: 30, elevation: 6 },
-    fabAlt: { backgroundColor: "#571310" },
+    fabAlt: { backgroundColor: c.accent },
     fabText: { color: c.bg, fontWeight: "900" }
 });

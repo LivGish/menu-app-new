@@ -8,23 +8,22 @@ type Props = NativeStackScreenProps<RootStackParamList, "Welcome">;
 export default function WelcomeScreen({ navigation }: Props) {
     return (
         <SafeAreaView style={styles.container}>
-            <ImageBackground source={{ uri: "https://i.pinimg.com/736x/55/ee/3e/55ee3e79796dda7c7194279276a8301a.jpg" }} style={styles.img}>
-                <View style={styles.center}>
-                    <Text style={styles.title}>Welcome to the Christoffel menu app.</Text>
-                    <Text style={styles.subtitle}>Authentic Italian food awaits</Text>
-                    <TouchableOpacity style={styles.cta} onPress={() => navigation.replace("Home")}>
-                        <Text style={styles.ctaText}>Enter Café</Text>
-                    </TouchableOpacity>
-                </View>
-            </ImageBackground>
+            <ImageBackground source={{ uri: "https://i.pinimg.com/736x/21/3a/d2/213ad2fdf181588fb8a65f90e6e53dab.jpg" }} style={styles.img}></ImageBackground>
+            <View style={styles.center}>
+                <Text style={styles.title}>Welcome to the Christoffel menu app.</Text>
+                <Text style={styles.subtitle}>Authentic Italian food awaits</Text>
+                <TouchableOpacity style={styles.cta} onPress={() => navigation.replace("Home")}>
+                    <Text style={styles.ctaText}>Enter Café</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 }
  
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "#f2e9d4" },
-    img: { height: '40%', width: '100%', justifyContent: "center", top: 0 },
-    center: { alignItems: "center", paddingHorizontal: 24 },
+    img: { height: '60%', width: '100%' },
+    center: { alignItems: "center", paddingLeft: 24, paddingRight: 24, marginTop: -150 },
     title: { color: "#571310", fontSize: 42, fontWeight: "800" },
     subtitle: { color: "#571310", fontSize: 16, marginTop: 6, marginBottom: 28 },
     cta: { backgroundColor: "#a72913", paddingVertical: 14, paddingHorizontal: 44, borderRadius: 28, elevation: 6 },
