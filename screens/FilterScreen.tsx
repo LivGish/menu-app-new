@@ -1,0 +1,72 @@
+import React, { useMemo, useState } from "react";
+import { FlatList, Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import { MenuItem, Course, RootStackParamList } from "../type";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+
+type Props = NativeStackScreenProps<RootStackParamList, "Filter">;
+
+const c = { 
+    bg: "#f2e9d4", 
+    card: "#f2e9d4", 
+    text: "#571310", 
+    meta: "#571310", 
+    input: "#ffffff",
+    border: "#ffffff" 
+};
+
+export default function FilterScreen({ route }: Props) {
+    const items: MenuItem[] = route.params?.items || [];
+    const [selected, setSelected] = useState<Course>("Starter");
+    const filtered = useMemo(() => items.filter(i => i.course === selected), [items, selected]);
+
+    return (
+        <SafeAreaView style={styles.container}>
+            <View style={styles.pickerWrap}>
+                <View style={styles.pickerBox}>
+                    <Picker
+                    selectedValue={selected}
+                    onValueChange={v => setSelected(v as Course)}
+                    mode="dropdown"
+                    dropdownIconColor="#571310"
+                    style={styles.picker}
+                    itemStyle={{ height: 44 }}
+                    >
+                        <Picker.Item label="Starter" value="Starter" color="#571310"/>
+                        <Picker.Item label="Main" value="Main" color="#571310"/>
+                        <Picker.Item label="Dessert" value="Dessert" color="#571310"/>
+                    </Picker>
+                </View>
+            </View>
+
+            <Text style={styles.heading}>{selected}s {filtered.length}</Text>
+
+            <FlatList
+                data={filtered}
+                keyExtractor={i => i.id}
+                renderItem={({ item }) => (
+                    <View style={styles.card}>
+                        <View style={styles.body}>
+                            <Text style={styles.title}>{item.dishName}</Text>
+                            <Text style={styles.meta}>{item.course} R{item.price}</Text>
+                        </View>
+                    </View>
+                )}
+                contentContainerStyle={{ paddingBottom: 20 }}
+            />
+        </SafeAreaView>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: c.bg, padding: 16 },
+    pickerWrap: { marginBottom: 12 },
+    pickerBox: { backgroundColor: c.input, borderRadius: 12, borderWidth: 1, borderColor: c.border, overflow: "hidden", height: 50, justifyContent: "center" },
+    picker: {color: c.text, height: 50, width: "100%" },
+    heading: { color: c.text, fontSize: 20, fontWeight: "900", textAlign: "center", marginBottom: 8 },
+    card: { backgroundColor: c.card, borderRadius: 16, overflow: "hidden", marginVertical: 8, elevation: 3 },
+    image: { width: "100%", height: 170 },
+    body: {padding: 12 },
+    title: {color: c.text, fontSize: 18, fontWeight: "800", },
+    meta: { color: c.meta, marginTop: 4 },
+});
