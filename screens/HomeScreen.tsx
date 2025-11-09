@@ -28,11 +28,11 @@ export default function HomeScreen({ navigation, items, removeItem, averages }: 
 
             <View style={styles.statsRow}>
                 <View style={styles.stat}>
-                    <Text style={styles.statLabel}>Beverages</Text>
+                    <Text style={styles.statLabel}>Starters</Text>
                     <Text style={styles.statValue}>R {averages.Starter}</Text>
                 </View>
                 <View style={styles.stat}>
-                    <Text style={styles.statLabel}>Pastries</Text>
+                    <Text style={styles.statLabel}>Mains</Text>
                     <Text style={styles.statValue}>R {averages.Main}</Text>
                 </View>
                 <View style={styles.stat}>
@@ -77,13 +77,13 @@ const c = { bg: "#f2e9d4", card: "#faf4e6ff", text: "#571310", meta: "#571310", 
  
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: c.bg, padding: 16 },
-    mainTitle: { fontSize: 28, fontWeight: "800", color: "#571310", textAlign: "center" }, 
-    itemCountText: { fontSize: 16, color: "#571310", textAlign: "center", marginBottom: 10 },   
-    statsRow: { flexDirection: "row", justifyContent: "space-between", marginBottom: 12 },
+    mainTitle: { fontSize: 28, fontWeight: "800", color: "#571310", textAlign: "center", paddingTop: 20 }, 
+    itemCountText: { fontSize: 16, color: "#571310", textAlign: "center", marginBottom: 10, paddingBottom: 20 },   
+    statsRow: { flexDirection: "row", justifyContent: "space-between", marginBottom: 12, paddingBottom: 20 },
     stat: { backgroundColor: c.card, width: "32%", borderRadius: 14, paddingVertical: 10, alignItems: "center", elevation: 3 },
     statLabel: { color: c.meta, fontSize: 12 },
     statValue: { color: c.text, fontSize: 16, fontWeight: "800" },
-    card: { backgroundColor: c.card, borderRadius: 16, overflow: "hidden", marginVertical: 8, elevation: 4 },
+    card: { backgroundColor: c.card, borderRadius: 16, overflow: "hidden", marginVertical: 8, elevation: 4, marginBottom: 10 },
     image: { width: "100%", height: 200 },
     body: { padding: 12 },
     title: { color: c.text, fontSize: 18, fontWeight: "800" },

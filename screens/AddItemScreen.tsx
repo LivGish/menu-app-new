@@ -73,8 +73,8 @@ export default function AddItemScreen({ navigation, addItem }: Props) {
                                 style={styles.picker}
                                 itemStyle={{ height: 44}}
                             >
-                                <Picker.Item label="Beverage" value="Beverage" color="#571310"/>
-                                <Picker.Item label="Pastry" value="Pastry" color="#571310"/>
+                                <Picker.Item label="Beverage" value="Starter" color="#571310"/>
+                                <Picker.Item label="Pastry" value="Main" color="#571310"/>
                                 <Picker.Item label="Dessert" value="Dessert" color="#571310"/>
                             </Picker>
                         </View>
