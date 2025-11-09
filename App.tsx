@@ -18,12 +18,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
  
 const predefined: MenuItem[] = [
     { 
+      id: '1',
       dishName: "Focaccia",
       description: "Wood-fired pizza base with garlic & herbs.",
       course: "Starter",
       price: 65,
     },
     { 
+      id: '2',
       dishName: "Caprese salad",
       description: "Fresh sliced mozzarella, cherry tomato halves and fresh basil leaves drizzled with balsamic vinegar and olive oil.",
       course: "Starter",
@@ -31,12 +33,14 @@ const predefined: MenuItem[] = [
     },
 
     { 
+      id: '3',
       dishName: "Veg pizza",
       description: "A mozzarella pizza topped with onions, mushrooms, peppers and feta.",
       course: "Main",
       price: 145,
     },
     { 
+      id: '4',
       dishName: "Fettuccine Bolognese",
       description: "Fettuccine pasta with a tender beef mince slow cooked in a tomato & veg base.",
       course: "Main",
@@ -44,12 +48,14 @@ const predefined: MenuItem[] = [
     },
 
     { 
+      id: '5',
       dishName: "Crème brûlée",
       description: "Baked vanilla bean custard with a caramelised sugar top.",
       course: "Dessert",
       price: 65,
     },
     { 
+      id: '6',
       dishName: "Tiramisu",
       description: "Layers of espresso-soaked ladyfingers and mascarpone cream, topped with a sprinkling of cocoa powder.",
       course: "Dessert",

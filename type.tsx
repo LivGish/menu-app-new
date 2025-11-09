@@ -8,6 +8,7 @@
 export type Course = "Starter" | "Main" | "Dessert";
 
 export type MenuItem = {
+    id: string;
     dishName: string;
     description: string;
     course: string | null;
@@ -15,6 +16,7 @@ export type MenuItem = {
 };
 
 export type RootStackParamList = {
+    Welcome: undefined;
     Home: undefined;
     Menu: undefined;
     AddItem: undefined;
