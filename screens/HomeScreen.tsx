@@ -16,6 +16,7 @@ type Props= NativeStackScreenProps<RootStackParamList, "Home"> & {
     averages: { Starter: string; Main: string; Dessert: string };
 };
 
+/* remove item button */
 export default function HomeScreen({ navigation, items, removeItem, averages }: Props) {
     const confirmRemove = (id: string) => {
         Alert.alert("Remove Item", "Are you sure you want to remove this item from the menu?", [
@@ -24,6 +25,7 @@ export default function HomeScreen({ navigation, items, removeItem, averages }: 
         ]);
     };
 
+    /* menu item counter */
     return (
         <SafeAreaView style={styles.container}>
                 <Text style={styles.mainTitle}>Menu</Text>
@@ -33,6 +35,7 @@ export default function HomeScreen({ navigation, items, removeItem, averages }: 
                     : `You currently have ${items.length} item${items.length > 1 ? "s" : ""} on your menu.`}
                 </Text>
 
+            /* display sprice average for each course */
             <View style={styles.statsRow}>
                 <View style={styles.stat}>
                     <Text style={styles.statLabel}>Starters</Text>
@@ -48,6 +51,7 @@ export default function HomeScreen({ navigation, items, removeItem, averages }: 
                 </View>
             </View>
 
+/* display seach menu item */
             <FlatList
             data={items}
             keyExtractor={i => i.id}
@@ -67,6 +71,7 @@ export default function HomeScreen({ navigation, items, removeItem, averages }: 
             contentContainerStyle={{ paddingBottom: 120}}
             />
 
+/* buttons for additem and fiter screens */
             <View style={styles.fabs}>
                 <TouchableOpacity style={styles.fab} onPress={() => navigation.navigate("AddItem")}>
                     <Text style={styles.fabText}>Edit menu</Text>
@@ -80,8 +85,10 @@ export default function HomeScreen({ navigation, items, removeItem, averages }: 
     );
 };
 
+/* standard colours for styling */
 const c = { bg: "#f2e9d4", card: "#faf4e6ff", text: "#571310", meta: "#571310", accent: "#a72913", chip: "#a72913" };
- 
+
+/* general styling */
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: c.bg, padding: 16 },
     mainTitle: { fontSize: 28, fontWeight: "800", color: "#571310", textAlign: "center", paddingTop: 20 }, 

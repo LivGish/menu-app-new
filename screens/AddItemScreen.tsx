@@ -23,28 +23,22 @@ import { Picker } from "@react-native-picker/picker";
 import { MenuItem, Course, RootStackParamList } from "../type";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
+
 type Props = NativeStackScreenProps<RootStackParamList, "AddItem"> & { addItem: (item: MenuItem) => void; };
 
-const c = { 
-    bg: "#f2e9d4", 
-    card: "#f2e9d4", 
-    text: "#571310", 
-    meta: "#571310", 
-    accent: "#a72913", 
-    input: "#ffffff",
-    border: "#ffffff" 
-};
-
+/* generate unique id for menu items */
 function uid() {  
     return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 }
 
+/* get user input for menu items */
 export default function AddItemScreen({ navigation, addItem }: Props) {
     const [dishName, setDishName] = useState("");
     const [description, setDescription] = useState("");
     const [course, setCourse] = useState<Course>("Starter");
     const [price, setPrice] = useState("");
 
+    /* alerts for missing/wrong information */
     const onSave = () => {
         if (!dishName || !description || !price) {
             Alert.alert("Missing fields.", "Please fill in all fields.");
@@ -61,6 +55,7 @@ export default function AddItemScreen({ navigation, addItem }: Props) {
     };
         
     return (
+        /* form to add new menu item */
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{flex: 1}}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <ScrollView contentContainerStyle={styles.form}>
@@ -101,6 +96,10 @@ export default function AddItemScreen({ navigation, addItem }: Props) {
     );
 }
 
+/* standard colours for styling */
+const c = { bg: "#f2e9d4", card: "#f2e9d4", text: "#571310", meta: "#571310", accent: "#a72913", input: "#ffffff",border: "#ffffff" };
+
+/* general styling */
 const styles = StyleSheet.create({
     form: { backgroundColor: c.bg, padding: 20 },
     header: { color: c.text, fontSize: 22, fontWeight: "900", textAlign: "center", marginBottom: 16 },

@@ -16,6 +16,7 @@ import FilterScreen from "./screens/FilterScreen";
   
 const Stack = createNativeStackNavigator<RootStackParamList>();
   
+/* predefined menu items */
 const predefined: MenuItem[] = [
   { 
     id: '1',
@@ -66,10 +67,13 @@ const predefined: MenuItem[] = [
 export default function App() {
   const [items, setItems] = useState<MenuItem[]>(predefined);
   
+  /* add item to menu list */
   const addItem = (item: MenuItem) => setItems(prev => [...prev, item]);
   
+  /* remove item from menu list */
   const removeItem = (id: string) => setItems(prev => prev.filter(item => item.id !== id));
   
+  /* calculate average course price */
   const avg = (course: Course) => {
     const list = items.filter(i => i.course === course);
     if (!list.length) return "0.00";
@@ -80,16 +84,20 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
+        /* header styling */
         screenOptions={{
           headerStyle: { backgroundColor: "#f2e9d4" },
           headerTintColor: "#571310",
           headerTitleStyle: { fontWeight: "800" }
         }}>
         <Stack.Screen
+          /* welcome screen */
           name="Welcome"
           component={WelcomeScreen}
           options={{ headerShown: false }}
         />
+
+        /* home screen */
         <Stack.Screen name="Home" options={{ title: "Christoffel Menu App" }}>
           {props => (
             <HomeScreen
@@ -104,6 +112,8 @@ export default function App() {
             />
           )}
         </Stack.Screen>
+
+        /* add item screen */
         <Stack.Screen name="AddItem" options={{ title: "Add New Item" }}>
           {props => <AddItemScreen {...props} addItem={addItem} />}
         </Stack.Screen>
