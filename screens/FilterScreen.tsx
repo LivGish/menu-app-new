@@ -13,7 +13,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Filter">;
 
-/* filters menu items by course */
+{/* filters menu items by course */}
 export default function FilterScreen({ route }: Props) {
     const items: MenuItem[] = route.params?.items || [];
     const [selected, setSelected] = useState<Course>("Starter");
@@ -23,7 +23,7 @@ export default function FilterScreen({ route }: Props) {
         <SafeAreaView style={styles.container}>
             <View style={styles.pickerWrap}>
                 <View style={styles.pickerBox}>
-                    /* picker for menu filter */
+                    {/* picker for menu filter */}
                     <Picker
                     selectedValue={selected}
                     onValueChange={v => setSelected(v as Course)}
@@ -32,7 +32,7 @@ export default function FilterScreen({ route }: Props) {
                     style={styles.picker}
                     itemStyle={{ height: 44 }}
                     >
-                        /* picker items */
+                        {/* picker items */}
                         <Picker.Item label="Starter" value="Starter" color="#571310"/>
                         <Picker.Item label="Main" value="Main" color="#571310"/>
                         <Picker.Item label="Dessert" value="Dessert" color="#571310"/>
@@ -42,7 +42,7 @@ export default function FilterScreen({ route }: Props) {
 
             <Text style={styles.heading}>{selected}s</Text>
 
-            /* menu items card */
+            {/* menu items card */}
             <FlatList
                 data={filtered}
                 keyExtractor={i => i.id}
@@ -61,10 +61,10 @@ export default function FilterScreen({ route }: Props) {
     );
 }
 
-/* standard colours for styling */
+{/* standard colours for styling */}
 const c = { bg: "#f2e9d4", card: "#faf4e6ff", text: "#571310", meta: "#571310", accent: "#a72913", chip: "#a72913", input: "#faf4e6ff", border: "#faf4e6ff" };
 
-/* general styling */
+{/* general styling */}
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: c.bg, padding: 16 },
     pickerWrap: { marginBottom: 12 },

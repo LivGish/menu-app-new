@@ -13,7 +13,7 @@ import { RootStackParamList } from "../type";
 type Props = NativeStackScreenProps<RootStackParamList, "Welcome">;
  
 export default function WelcomeScreen({ navigation }: Props) {
-    /* welcome screen components */
+    {/* welcome screen components */}
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={{ uri: "https://i.pinimg.com/736x/21/3a/d2/213ad2fdf181588fb8a65f90e6e53dab.jpg" }} style={styles.img}></ImageBackground>
@@ -28,7 +28,7 @@ export default function WelcomeScreen({ navigation }: Props) {
     );
 }
  
-/* general styling */
+{/* general styling */}
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "#f2e9d4" },
     img: { height: '60%', width: '100%' },

@@ -26,19 +26,19 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 type Props = NativeStackScreenProps<RootStackParamList, "AddItem"> & { addItem: (item: MenuItem) => void; };
 
-/* generate unique id for menu items */
+{/* generate unique id for menu items */}
 function uid() {  
     return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 }
 
-/* get user input for menu items */
+{/* get user input for menu items */}
 export default function AddItemScreen({ navigation, addItem }: Props) {
     const [dishName, setDishName] = useState("");
     const [description, setDescription] = useState("");
     const [course, setCourse] = useState<Course>("Starter");
     const [price, setPrice] = useState("");
 
-    /* alerts for missing/wrong information */
+    {/* alerts for missing/wrong information */}
     const onSave = () => {
         if (!dishName || !description || !price) {
             Alert.alert("Missing fields.", "Please fill in all fields.");
@@ -75,8 +75,8 @@ export default function AddItemScreen({ navigation, addItem }: Props) {
                                 style={styles.picker}
                                 itemStyle={{ height: 44}}
                             >
-                                <Picker.Item label="Beverage" value="Starter" color="#571310"/>
-                                <Picker.Item label="Pastry" value="Main" color="#571310"/>
+                                <Picker.Item label="Starter" value="Starter" color="#571310"/>
+                                <Picker.Item label="Main" value="Main" color="#571310"/>
                                 <Picker.Item label="Dessert" value="Dessert" color="#571310"/>
                             </Picker>
                         </View>
@@ -96,10 +96,10 @@ export default function AddItemScreen({ navigation, addItem }: Props) {
     );
 }
 
-/* standard colours for styling */
+{/* standard colours for styling */}
 const c = { bg: "#f2e9d4", card: "#f2e9d4", text: "#571310", meta: "#571310", accent: "#a72913", input: "#ffffff",border: "#ffffff" };
 
-/* general styling */
+{/* general styling */}
 const styles = StyleSheet.create({
     form: { backgroundColor: c.bg, padding: 20 },
     header: { color: c.text, fontSize: 22, fontWeight: "900", textAlign: "center", marginBottom: 16 },
